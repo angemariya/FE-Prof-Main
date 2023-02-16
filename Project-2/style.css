@@ -1,0 +1,67 @@
+body {
+    background: gray;
+    margin: 0;
+}
+
+.grid-container {
+    min-height: 100vh;
+    background: white;
+    
+    display: grid;
+    grid-template: "nav header header header aside"
+                    "nav main main main aside"
+                    "nav . . . aside"
+                    "footer footer footer footer aside"
+    ;
+    grid-template-columns: 100px 1fr 2fr 1fr 20vw;
+    grid-template-rows: 20vh 1fr 1fr 300px;
+
+
+    /*
+    grid-template-columns: [col1-start] 50px [col1-end col2-start] 50px [col3] 50px [col4] 50px [col5];
+    grid-template-rows: [row1] 50px [row2] 50px [row3] 50px [row4] 50px [row5];
+    */
+    /*grid-template: 
+        "header header header aside-2"
+        "main main aside aside-2"
+        "footer footer footer aside-2"
+        "footer-2 footer-2 footer-2 footer-2";
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fill, min(100px, 1fr)
+
+    justify-content:;
+    align-items:;
+    align-self:;
+
+
+    rows-gap
+    column-gap
+
+        */
+}
+
+.grid-container > header {
+    grid-area: header;
+    background-color: wheat;
+}
+
+.grid-container > main {
+    grid-area: main;
+    background: yellow;
+}
+
+.grid-container > aside {
+    grid-area: aside;
+    background: steelblue;
+}
+
+.grid-container > footer {
+    grid-area: footer;
+    background: black;
+    color: white;
+}
+
+.grid-container > nav {
+    grid-area: nav;
+    background-color: green;
+}

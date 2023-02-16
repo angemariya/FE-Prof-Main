@@ -1,0 +1,20 @@
+body {
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    grid-template-rows: repeat(2, 200px);
+    gap: 10px;
+}
+p {
+    vertical-align: middle;
+    text-align: justify;
+}
+
+i{
+    font-size: 32px;
+    vertical-align: middle;
+    float: left;
+}
+
+div:hover i {
+    text-shadow: 2px 2px 4px #00ffff;
+}
