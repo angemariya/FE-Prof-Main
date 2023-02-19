@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e6db3333ec.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Twitter</title>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="navigation">
+            <nav>
+                <a href="index.html" class="icon-twitter"><i class="fa-brands fa-twitter"></i></a>
+                <ul class="navigation-list">
+                    <li class="navigation-list_item">
+                        <a href="#">
+                            <i class="fa-solid fa-house list-item_icon"></i>Home</a>
+                    </li>
+                    <li class="navigation-list_item">
+                        <a href="#">
+                            <i class="fa-regular fa-hashtag list-item_icon"></i>Explore</a>
+                    </li>
+                    <li class="navigation-list_item">
+                        <a href="#">
+                            <i class="fa-regular fa-bell list-item_icon"></i>Notifications</a>
+                    </li>
+                    <li class="navigation-list_item">
+                        <a href="#">
+                            <i class="fa-regular fa-envelope list-item_icon"></i>Messages</a>
+                    </li>
+                    <li class="navigation-list_item">
+                        <a href="#">
+                            <i class="fa-regular fa-bookmark list-item_icon"></i>Bookmarks</a>
+                    </li>
+                    <li class="navigation-list_item">
+                        <a href="#">
+                            <i class="fa-solid fa-sheet-plastic list-item_icon"></i>Lists</a>
+                    </li>
+                    <li class="navigation-list_item">
+                        <a href="#">
+                            <i class="fa-regular fa-user list-item_icon"></i>Profile</a>
+                    </li>
+                    <li class="navigation-list_item">
+                        <a href="#"><a href="#">
+                                <i class="fa-solid fa-ellipsis nav-icon list-item_icon"></i>More</a>
+                    </li>
+                </ul>
+                <button class="btn-tweet_big">Tweet</button>
+            </nav>
+            <div class="user-account">
+                <img class="user-photo" src="./img/user-photo.jpg" alt="user photo">
+                <div class="user-wrapper">
+                    <span class="user-account_name">Victor UX/UI</span>
+                    <span class="user-account_username">@victoruxui</span>
+                </div>
+                <span class="user-account_more">...</span>
+            </div>
+        </div>
+
+        <main>
+            <header>Home</header>
+            <div class="form-container">
+                <img class="user-photo" src="./img/user-photo.jpg" alt="user photo">
+                <form class="form">
+                    <textarea class="user-text" placeholder="Hello I'm a product designer"></textarea>
+                    <span class="user-privacy">Everyone can reply</span>
+                    <div class="options-wrapper">
+                        <div class="user-options">
+                            <a class="option" href="#"><i class="fa-regular fa-image"></i></a>
+                            <a class="option" href="#"><i class="fa-solid fa-video"></i></a>
+                            <a class="option" href="#"><i class="fa-solid fa-share"></i></a>
+                            <a class="option" href="#"><i class="fa-regular fa-face-smile"></i></a>
+                            <a class="option" href="#"><i class="fa-regular fa-calendar"></i></a>
+                        </div>
+                        <div class="option-plus">
+                            <div class="circle"></div>
+                            <div class="circle-plus"></div> 
+                            <button type="button" class="btn-tweet_sml">Tweet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="user-tweet">
+                <span class="liked">Figma liked</span>
+                <img class="user-photo" src="./img/user-photo-don.jpg" alt="user photo">
+                <div class="user-post">
+                    <div class="user-info">
+                        <span class="user-account_name"><a href="#">Don Norman</a></span>
+                        <span class="user-account_username">@jnd1er</span>
+                        <time>1 min</time>
+                    </div>
+                    <p class="user-post">The DesignLab is doing major work on Community-Driven Design, with several
+                        different variants. If you are working in this area, submit a paper to the DIS conference here in
+                        San Diego (see DesignLab posting below)....</p>
+                    <p>https://facebook.com/don.norman.18/...</p>
+                    <ul class="user-post-btns">
+                        <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
+                        <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
+                        <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
+                        <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="user-tweet">
+                <span class="liked">Figma liked</span>
+                <img class="user-photo" src="./img/user-photo-phunt.jpg" alt="user photo">
+                <div class="user-post">
+                    <div class="user-info">
+                        <span class="user-account_name"><a href="#">Product Hunt</a></span>
+                        <span class="user-account_username">@ProductHunt</span>
+                        <time>5 min</time>
+                    </div>
+                    <p class="user-post">Congrats @collectedview for winning a Product Hunt T-shirt! DM us to claim your prize.</p>
+                    <div class="post-image">
+                    </div>
+                    <ul class="user-post-btns">
+                        <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
+                        <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
+                        <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
+                        <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="user-tweet">
+                <span class="liked">Figma liked</span>
+                <img class="user-photo" src="./img/y.svg" alt="user photo">
+                <div class="user-post">
+                    <div class="user-info">
+                        <span class="user-account_name"><a href="#">Y Combunator</a></span>
+                        <span class="user-account_username">@ycombinator</span>
+                        <time>15 min</time>
+                    </div>
+                    <p class="user-post">YC W14's @NooraHealth launched an NFT auction to save thousands of lives. Read why @paulg bid here: http://paulgraham.com/nft.html</p>
+                    <ul class="user-post-btns">
+                        <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
+                        <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
+                        <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
+                        <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+        <aside>
+            <form class="search-form">
+                <input class="search-input" type="text" name="search" placeholder="Search Twitter">
+            </form>
+            <div class="aside-part">
+                <h3 class="aside-headline">What's happening</h3>
+
+                <div class="news-card">
+                    <p class="news-card_theme">Trending in Colombia</p>
+                    <p class="news-cars_text">What's happening</p>
+                    <span class="counter">16.9K Tweets</span>
+                    <a href="#" class="btn-more">...</a>
+                </div>
+
+                <div class="news-card">
+                    <p class="news-card_theme">Trending in Colombia</p>
+                    <p class="news-cars_text">What's happening</p>
+                    <span class="counter">16.9K Tweets</span>
+                    <a href="#" class="btn-more">...</a>
+                </div>
+
+                <div class="news-card news-post">
+                    <div class="new_card_wrapper">
+                        <p class="news-card_theme">Trending in Colombia</p>
+                        <time>This morning</time>
+                        <p class="news-cars_text">The pros and cons of the new iPhone - Tips and tricks</p>
+                    </div>
+                    <img class="card-photo" src="./img/aside-photo.jpg" alt="news photo">
+                </div>
+
+                <div class="news-card news-post">
+                    <div class="new_card_wrapper">
+                        <p class="news-card_theme">Trending in Colombia</p>
+                        <time>This morning</time>
+                        <p class="news-cars_text">The pros and cons of the new iPhone - Tips and tricks</p>
+                    </div>
+                    <img class="card-photo" src="./img/aside-photo.jpg" alt="news photo">
+                </div>
+
+                <div class="news-card">
+                    <p class="news-card_theme">Trending in Colombia</p>
+                    <p class="news-cars_text">What's happening</p>
+                    <span class="counter">16.9K Tweets</span>
+                    <span class="hashtag"><a href="#">#GoodMorning</a></span>
+                    <a class="btn-more" href="#">...</a>
+                </div>
+                <div class="news-card">
+                    <a class="show-more" href="#">Show more</a>
+                </div>
+            </div>
+
+            <div class="aside-part suggestion-users">
+                <h3 class="aside-headline">Who to follow</h3>
+                <div class="suggestion-user">
+                    <div class="suggestion-user_info">
+                        <img src="./img/user-photo-ilon.png" alt="photo of user">
+                        <div class="user-wrapper">
+                            <span class="user-account_name">Elon Musk</span>
+                            <span class="user-account_username">@elonmusk</span>
+                        </div>
+                    </div>
+                    <button class="follow">Follow</button>
+                </div>
+                <div class="suggestion-user">
+                    <div class="suggestion-user_info">
+                        <img src="./img/user-photo-ilon.png" alt="photo of user">
+                        <div class="user-wrapper">
+                            <span class="user-account_name">Elon Musk</span>
+                            <span class="user-account_username">@elonmusk</span>
+                        </div>
+                    </div>
+                    <button class="follow">Follow</button>
+                </div>
+                <div class=" news-card show-more">
+                    <a href="#">Show more</a>
+                </div>
+            </div>
+
+            <div class="aside-part suggestion-topics">
+                <h3 class="aside-headline">Topics to follow</h3>
+                <div class="news-card topic">
+                    <div class="topic-wrapper">
+                        <span class="topic-name">UX Design</span>
+                        <span class="topic-descr">Computer programming</span>
+                    </div>
+                    <div class="button-wrapper">
+                        <button class="follow">Follow</button>
+                        <a class="close" href="#"></a>
+                    </div>
+                </div>
+
+                <div class="news-card topic">
+                    <div class="topic-wrapper">
+                        <span class="topic-name">Technology</span>
+                        <span class="topic-descr">All about technology</span>
+                    </div>
+                    <div class="button-wrapper">
+                        <button class="follow">Follow</button>
+                        <a class="close" href="#"></a>
+                    </div>
+                </div>
+
+                <div class="news-card topic">
+                    <div class="topic-wrapper">
+                        <span class="topic-name">Python</span>
+                        <span class="topic-descr">Computer programming</span>
+                    </div>
+                    <div class="button-wrapper">
+                        <button class="follow">Follow</button>
+                        <a class="close" href="#"></a>
+                    </div>
+                </div>
+                <div class="news-card show-more">
+                    <a href="#">Show more</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+</body>
+
+</html>
