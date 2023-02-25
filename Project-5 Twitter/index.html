@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/normalize.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <title>Twitter</title>
+    <title>Twitter - Home</title>
 </head>
 
 <body>
@@ -66,7 +66,9 @@
         </div>
 
         <main>
-            <header>Home</header>
+            <header>
+                <div class="header-wrapper">Home</div>
+            </header>
             <div class="form-container">
                 <img class="user-photo" src="./img/user-photo.jpg" alt="user photo">
                 <form class="form">
@@ -82,75 +84,91 @@
                         </div>
                         <div class="option-plus">
                             <div class="circle"></div>
-                            <div class="circle-plus"></div> 
+                            <div class="circle-plus"></div>
                             <button type="button" class="btn-tweet_sml">Tweet</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="user-tweet">
-                <span class="liked">Figma liked</span>
-                <img class="user-photo" src="./img/user-photo-don.jpg" alt="user photo">
-                <div class="user-post">
-                    <div class="user-info">
-                        <span class="user-account_name"><a href="#">Don Norman</a></span>
-                        <span class="user-account_username">@jnd1er</span>
-                        <time>1 min</time>
+            <section class="user-tweets">
+                <div class="user-tweet">
+                    <span class="liked">Figma liked</span>
+                    <img class="user-photo" src="./img/user-photo-don.jpg" alt="user photo">
+                    <div class="user-post">
+                        <div class="user-info">
+                            <span class="user-account_name"><a href="#">Don Norman</a></span>
+                            <span class="user-account_username">@jnd1er</span>
+                            <time>1 min</time>
+                        </div>
+                        <p class="user-post">The DesignLab is doing major work on Community-Driven Design, with several different variants. If you are working in this area, submit a paper to the DIS conference
+                            here in
+                            San Diego (see DesignLab posting below) Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Dicta repellendus rerum quia nemo ad eum, id officiis, esse maxime officia quas
+                            delectus architecto? Molestias sapiente fuga non molestiae ducimus natus. Lorem ipsum dolor
+                            sit, amet consectetur adipisicing elit. Dignissimos pariatur quia nostrum dolore, sed
+                            suscipit sequi beatae velit quo, recusandae consequatur animi illum molestiae expedita et
+                            tempora, optio quis nisi amet obcaecati. Neque reprehenderit quisquam alias eligendi
+                            corporis, voluptas quasi nisi ea incidunt fugiat maiores, eos culpa quia provident facere
+                            eum perferendis. Ullam numquam labore laboriosam, nam eum provident quibusdam deserunt
+                            repellendus officia, officiis dolores reprehenderit maiores aperiam animi excepturi maxime
+                            architecto quidem voluptates magnam vel voluptatibus impedit! Facere alias ea aut incidunt
+                            non! Quae unde dicta quaerat eveniet eos vitae libero facere, eligendi accusantium dolore
+                            ipsam, odit enim officiis!</p>
+                        <ul class="user-post-btns">
+                            <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
+                            <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
+                            <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
+                            <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
+                        </ul>
                     </div>
-                    <p class="user-post">The DesignLab is doing major work on Community-Driven Design, with several
-                        different variants. If you are working in this area, submit a paper to the DIS conference here in
-                        San Diego (see DesignLab posting below)....</p>
-                    <p>https://facebook.com/don.norman.18/...</p>
-                    <ul class="user-post-btns">
-                        <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
-                        <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
-                        <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
-                        <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
-                    </ul>
                 </div>
-            </div>
 
-            <div class="user-tweet">
-                <span class="liked">Figma liked</span>
-                <img class="user-photo" src="./img/user-photo-phunt.jpg" alt="user photo">
-                <div class="user-post">
-                    <div class="user-info">
-                        <span class="user-account_name"><a href="#">Product Hunt</a></span>
-                        <span class="user-account_username">@ProductHunt</span>
-                        <time>5 min</time>
+                <div class="user-tweet">
+                    <span class="liked">Figma liked</span>
+                    <img class="user-photo" src="./img/user-photo-phunt.jpg" alt="user photo">
+                    <div class="user-post">
+                        <div class="user-info">
+                            <span class="user-account_name"><a href="#">Product Hunt</a></span>
+                            <span class="user-account_username">@ProductHunt</span>
+                            <time>5 min</time>
+                        </div>
+                        <p class="user-post">Congrats @collectedview for winning a Product Hunt T-shirt! DM us to claim
+                            your prize.</p>
+                        <div class="post-image">
+                        </div>
+                        <ul class="user-post-btns">
+                            <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
+                            <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
+                            <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
+                            <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
+                        </ul>
                     </div>
-                    <p class="user-post">Congrats @collectedview for winning a Product Hunt T-shirt! DM us to claim your prize.</p>
-                    <div class="post-image">
-                    </div>
-                    <ul class="user-post-btns">
-                        <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
-                        <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
-                        <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
-                        <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
-                    </ul>
                 </div>
-            </div>
 
-            <div class="user-tweet">
-                <span class="liked">Figma liked</span>
-                <img class="user-photo" src="./img/y.svg" alt="user photo">
-                <div class="user-post">
-                    <div class="user-info">
-                        <span class="user-account_name"><a href="#">Y Combunator</a></span>
-                        <span class="user-account_username">@ycombinator</span>
-                        <time>15 min</time>
+                <div class="user-tweet">
+                    <span class="liked">Figma liked</span>
+                    <img class="user-photo" src="./img/y.svg" alt="user photo">
+                    <div class="user-post">
+                        <div class="user-info">
+                            <span class="user-account_name"><a href="#">Y Combunator</a></span>
+                            <span class="user-account_username">@ycombinator</span>
+                            <time>15 min</time>
+                        </div>
+                        <p class="user-post">YC W14's @NooraHealth launched an NFT auction to save thousands of lives.
+                            Read why @paulg bid here: http://paulgraham.com/nft.html</p>
+                        <ul class="user-post-btns">
+                            <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
+                            <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
+                            <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
+                            <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
+                        </ul>
                     </div>
-                    <p class="user-post">YC W14's @NooraHealth launched an NFT auction to save thousands of lives. Read why @paulg bid here: http://paulgraham.com/nft.html</p>
-                    <ul class="user-post-btns">
-                        <li><button class="btn"><i class="btn-comments fa-regular fa-comment"></i>3</button></li>
-                        <li><button class="btn"><i class="btn-retweet fa-solid fa-repeat"></i></button></li>
-                        <li><button class="btn"><i class="btn-likes fa-regular fa-heart"></i>16</button></li>
-                        <li><button class="btn"><i class="btn-share fa-solid fa-share"></i></button></li>
-                    </ul>
                 </div>
-            </div>
+
+            </section>
 
         </main>
+
         <aside>
             <form class="search-form">
                 <input class="search-input" type="text" name="search" placeholder="Search Twitter">

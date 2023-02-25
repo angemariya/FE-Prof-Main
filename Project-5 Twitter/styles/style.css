@@ -1,15 +1,17 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smooting: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
 }
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 a {
@@ -54,7 +56,6 @@ img {
 .navigation {
   display: flex;
   flex-direction: column;
-  padding-top: 64px;
   padding-left: 12px;
   padding-right: 40px;
   position: relative;
@@ -67,17 +68,19 @@ img {
         display: none;
     }
 }
+nav {
+  position: fixed;
+}
 
 .icon-twitter {
-  position: absolute;
-  top: 15px;
-  left: 55px;
+  display: inline-block;
+  padding: 11px 15px;
   color: var(--accent);
   font-size: 30px;
 }
 
 .navigation-list_item {
-  padding: 10px;
+  padding: 15px;
 }
 
 .navigation-list_item a {
@@ -150,23 +153,33 @@ img {
   bottom: 50%;
 }
 
+.user-photo {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 /*      MAIN SECTION    */
 
 main {
-  box-shadow: 1px 0 0 0 var(--decorative);
+  outline: 1px solid var(--decorative);
 }
 
-header {
+.user-tweets {
+  padding-top: 170px;
+}
+
+.header-wrapper {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  width: 573px;
   font-size: 20px;
   font-weight: 700;
   padding: 15px;
-  position: sticky;
-  top: 0;
   background: white;
-  z-index: 10;
-  box-shadow: 0 1px 0 0 var(--decorative);
+  outline: 1px solid var(--decorative);
 }
-header::after {
+.header-wrapper::after {
   content: "";
   width: 41px;
   height: 52px;
@@ -178,14 +191,14 @@ header::after {
 
 .form-container {
   display: grid;
-  position: sticky;
+  position: fixed;
+  width: 573px;
   gap: 12px;
   grid-template-columns: 50px 1fr;
   padding: 8px 16px;
   background-color: white;
-  box-shadow: 0px 1px 0px var(--decorative);
-  
-  top: 53px;
+  outline: 1px solid var(--decorative);
+  top: 55px;
   z-index: 5;
 }
 
@@ -331,11 +344,12 @@ textarea:focus + .user-privacy {
 .liked {
   position: absolute;
   top: 15px;
-  left: 50px;
+  left: 59px;
   padding-left: 20px;
   font-size: 13px;
   font-weight: bold;
   color: var(--secondarytext);
+  cursor: default;
 }
 
 .liked::before {
@@ -502,6 +516,7 @@ aside {
   background-color: transparent;
   color: var(--accent);
   padding: 6px 17px;
+  font-weight: bold;
 }
 
 .follow:hover {
