@@ -59,7 +59,6 @@ img {
   padding-left: 12px;
   padding-right: 40px;
   position: relative;
-  outline: 1px solid var(--decorative);
   height: 100%;
 }
 
@@ -352,14 +351,15 @@ textarea:focus + .user-privacy {
   cursor: default;
 }
 
-.liked::before {
-  content: "";
+.heart-icon {
+  color: var(--secondarytext);
   position: absolute;
-  width: 15px;
-  height: 15px;
-  background: url(../img/heart.svg);
-  top: 0;
+  top: 2px;
   left: 0;
+}
+
+.liked:hover .heart-icon {
+  color: red;
 }
 
 time {
@@ -408,6 +408,17 @@ aside {
   padding-left: 12px;
 }
 
+.search-form {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  color: var(--secondarytext);
+  top: 13px;
+  left: 18px;
+}
+
 .search-input {
   width: 100%;
   border-radius: 22px;
@@ -418,20 +429,9 @@ aside {
   padding-top: 12px;
   padding-bottom: 12px;
   margin-bottom: 16px;
-  position: relative;
   color: var(--secondarytext);
 }
 
-.search-input[type="text"]::after {
-  content: "";
-  width: 18px;
-  height: 18px;
-  background: url(../img/search.svg);
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 5;
-}
 
 .aside-part {
   background: #f7f9fa;
