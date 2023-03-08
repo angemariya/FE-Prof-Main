@@ -17,6 +17,7 @@ const createToDo = (text) => {   //функция создания туду в �
     const dlt = event => {                                      // функция удаления элемента
         newToDoContainer.remove();                              //удаление элемента
         localStorage.setItem("toDo", array.filter(el => el !== paragraph.innerText).join(",")); //обновление хранилища
+        localStorage.removeItem(paragraph.innerText)
     };
 
     const changeHandler = event => {        //функция сохранения состояния чекбоксов
@@ -37,7 +38,7 @@ const createToDo = (text) => {   //функция создания туду в �
     
     deleteButton.addEventListener("click", dlt);    // доб слушатель кнопке удаления с функцией удаления элемента
     deleteButton.setAttribute("type", "button");    // доб атрибуты тип 
-    deleteButton.setAttribute("value", "x");            // и значение
+    deleteButton.setAttribute("value", "delete");            // и значение
     
     newToDoContainer.append(newToDoValue, paragraph, deleteButton);// добавляем checkbox и p внутрь label-контейнер
     newToDoValue.setAttribute("type", "checkbox");  // добавление атрибутов у инпутов
@@ -55,7 +56,8 @@ const handleAdd = event => { //функция добавления туду
 
 const clear = event => {    //функция очистки формы
     list.remove();                                              // очищает форму
-    localStorage.clear()                // очищает хранилище
+    localStorage.clear();                // очищает хранилище
+    location.reload();
 }
 
 //array.map(el=>createToDo(el)).forEach(el=>list.append(el));
