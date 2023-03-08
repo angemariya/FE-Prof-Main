@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+label {
+    display: flex;
+    width: 100%;
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 30px;
+}
+
+label input[type="button"] {
+    margin-left: 30px;
+}
