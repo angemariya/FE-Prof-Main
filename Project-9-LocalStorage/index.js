@@ -25,16 +25,6 @@ const createToDo = (toDoEntity) => {   //функция создания туд�
         localStorage.setItem("toDo", JSON.stringify(array));     //обновление хранилища
     };
 
-    /*
-        const changeHandler = event => {                            
-        if (newToDoValue.checked) {
-            localStorage.setItem(paragraph.innerText, JSON.stringify(newToDoValue.checked)) //newToDoValue.checked  - true !!
-        } else {
-            localStorage.setItem(paragraph.innerText, false)
-        }
-    }
-    */
-
     const handleChange = () => {                                //функция сохранения состояния чекбоксов
         toDoEntity.isCompleted = !toDoEntity.isCompleted;
         localStorage.setItem("toDo", JSON.stringify(array));
@@ -63,16 +53,23 @@ const handleAdd = event => { //функция добавления туду
 }
 
 const clear = event => {    //функция очистки формы
+    
+    // Первый вариант
     /*
     const collChildren = []
     for(let i = 0; i < list.children.length; i++){
         collChildren.push(list.children.item(i));
     }
     collChildren.forEach(e => e.remove())
-    
-    list.replaceChildren(); */
+    */
+
+    //Второй вариант
+    /*
+    list.replaceChildren(); 
+    */
    
     while (list.firstChild) list.firstChild.remove(); /*list.removeChild(list.firstChild); */
+
     array.splice(0,array.length);
     localStorage.removeItem("toDo");                           // очищает хранилище
     //location.reload();
