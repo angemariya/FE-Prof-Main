@@ -7,7 +7,7 @@ const list = document.querySelector("#list");                       // форм�
 const deadline = document.querySelector("#deadline");
 const sortUpButton = document.querySelector(".sort-up");            //кнопка сортировки по возрастанию
 const sortDownButton = document.querySelector(".sort-down");        //кнопка сортировки по возрастанию
-const hideChecked = document.querySelector(".hide");
+const hideCheckedButton = document.querySelector(".hide");
 
 const array = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : []; //state
 const createToDoEntity = (textToDo, time) => ({ text: textToDo, isCompleted: false, timeToDo: time }) // функция массив объектов
@@ -48,6 +48,15 @@ const createToDo = (toDoEntity) => {   //функция создания туд�
     newToDoValue.addEventListener("change", handleChange);         //слушатель на событие change
     //const str = toDoEntity.time;
     //spanTime.innerHTML = `${str.substr(0, 2)}:${str.substr(2)}`
+
+    function hideChecked () {
+        if (newToDoValue.checked) {
+            newToDoContainer.classList.add("hided")
+        }
+    }
+
+    hideCheckedButton.addEventListener("click", hideChecked);
+
 
     return newToDoContainer;                        // возвращает готовый label-контейнер;
 }
@@ -97,11 +106,6 @@ const sortingDown = event => {
     list.append(...array.map(createToDo));
 }
 
-const hide = event => {
-    const hided = array.filter((el)=> el.isCompleted === true); //выводит только выполненные туду 
-
-}
-
 
 //array.map(el=>createToDo(el)).forEach(el=>list.append(el));
 list.append(...array.map(createToDo))            // добавляет в форму элемент(ы) из массива array, который(-ые) проходят преобразование функцией создания todo
@@ -110,9 +114,6 @@ button.addEventListener("click", handleAdd);     // слушатель для к
 clearButton.addEventListener("click", clear);    // слушатель для кнопки удалить
 sortUpButton.addEventListener("click", sortingUp);
 sortDownButton.addEventListener("click", sortingDown);
-hideChecked.addEventListener("click", hide);
-
-
 
 /*
 1. v прокомментировать 
