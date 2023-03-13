@@ -51,7 +51,7 @@ const createToDo = (toDoEntity) => {   //функция создания туд�
 
     function hideChecked () {
         if (newToDoValue.checked) {
-            newToDoContainer.classList.toggle("hided")
+            newToDoContainer.classList.add("hided")
         }
     }
 
