@@ -12,7 +12,6 @@ const hideChecked = document.querySelector(".hide");
 const array = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : []; //state
 const createToDoEntity = (textToDo, time) => ({ text: textToDo, isCompleted: false, timeToDo: time }) // функция массив объектов
 
-
 const createToDo = (toDoEntity) => {   //функция создания туду в разметке
 
     const newToDoContainer = document.createElement("label");   // создание лейбла 
@@ -59,7 +58,6 @@ const handleAdd = event => { //функция добавления туду
     list.append(createToDo(toDoEntity));     // добавляем в форму новый toDo, аргумент - то что ввели в поле текстового импута
     localStorage.setItem("toDo", JSON.stringify(array));   
     newToDoInput.value = "";                         // очищение текстового поля
-    console.log(array);
 }
 
 const clear = event => {    //функция очистки формы
