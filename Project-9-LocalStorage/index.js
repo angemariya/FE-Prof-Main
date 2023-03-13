@@ -7,7 +7,6 @@ const list = document.querySelector("#list");                       // форм�
 const deadline = document.querySelector("#deadline");
 const sortUpButton = document.querySelector(".sort-up");            //кнопка сортировки по возрастанию
 const sortDownButton = document.querySelector(".sort-down");        //кнопка сортировки по возрастанию
-const hideCheckedButton = document.querySelector(".hide");
 
 const array = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : []; //state
 const createToDoEntity = (textToDo, time) => ({ text: textToDo, isCompleted: false, timeToDo: time }) // функция массив объектов
@@ -19,6 +18,7 @@ const createToDo = (toDoEntity) => {   //функция создания туд�
     const paragraph = document.createElement("p");              // создание p для текста
     const spanTime = document.createElement("span");
     const deleteButton = document.createElement("input");       // создание инпута для кнопки удаления
+    const hideCheckedButton = document.querySelector(".hide");
     
     const dlt = event => { // функция удаления элемента
          
@@ -51,7 +51,7 @@ const createToDo = (toDoEntity) => {   //функция создания туд�
 
     function hideChecked () {
         if (newToDoValue.checked) {
-            newToDoContainer.classList.add("hided")
+            newToDoContainer.classList.toggle("hided")
         }
     }
 
