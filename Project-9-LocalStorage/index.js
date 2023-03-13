@@ -7,6 +7,7 @@ const list = document.querySelector("#list");                       // форм�
 const deadline = document.querySelector("#deadline");
 const sortUpButton = document.querySelector(".sort-up");            //кнопка сортировки по возрастанию
 const sortDownButton = document.querySelector(".sort-down");        //кнопка сортировки по возрастанию
+const hideChecked = document.querySelector(".hide");
 
 const array = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : []; //state
 const createToDoEntity = (textToDo, time) => ({ text: textToDo, isCompleted: false, timeToDo: time }) // функция массив объектов
@@ -98,17 +99,20 @@ const sortingDown = event => {
     list.append(...array.map(createToDo));
 }
 
+const hide = event => {
+    const hided = array.filter((el)=> el.isCompleted === true); //выводит только выполненные туду 
+
+}
+
 
 //array.map(el=>createToDo(el)).forEach(el=>list.append(el));
 list.append(...array.map(createToDo))            // добавляет в форму элемент(ы) из массива array, который(-ые) проходят преобразование функцией создания todo
 
 button.addEventListener("click", handleAdd);     // слушатель для кнопки добавить
 clearButton.addEventListener("click", clear);    // слушатель для кнопки удалить
-sortUpButton.addEventListener("click", sortingUp)
-sortDownButton.addEventListener("click", sortingDown)
-
-
-
+sortUpButton.addEventListener("click", sortingUp);
+sortDownButton.addEventListener("click", sortingDown);
+hideChecked.addEventListener("click", hide);
 
 
 
