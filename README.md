@@ -1,4 +1,4 @@
-Homeworks and class lessons from the course professional prontend development
+Homeworks and class lessons from the course professional frontend development
 <br>
 1. [Project 2 Grid Layout](https://angemariya.github.io/FE-Prof-Main/Project-2/index.html)
 2. [Project 3 Grid Layout](https://angemariya.github.io/FE-Prof-Main/Project-3/index.html)
