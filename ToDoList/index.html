@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>To Do List</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>To Do list for today</h1>
+        <form class="createToDo">
+            <label for=""><p>Enter your task</p><input type="text" id="text"></label>
+            <label class="deadline-label"><p>Enter deadline</p><input type="time" id="deadline"></label>
+            <div class="btn-wrapper">
+                <input type="button" value="Add" class="btn add">
+                <input type="button" value="Clear all" class="btn clear">
+                <input type="button" value="Hide checked" class = "btn hide">
+            </div> 
+        </form>
+
+        <form id="list" class="toDoList">
+        </form>
+
+        <div class="btn-wrapper">
+            <button class="btn sort-up">Sort up</button>
+            <button class="btn sort-down">Sort down</button>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>

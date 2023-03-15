@@ -1,127 +1,120 @@
-//  localStorage.getItem(key, value)
+//MODEL
+const array = localStorage.getItem("toDo")
+  ? JSON.parse(localStorage.getItem("toDo"))
+  : [];
 
-const button = document.querySelector(".add");                      // кнопка добавления
-const clearButton = document.querySelector(".clear")                // кнопка удаления
-const newToDoInput = document.querySelector("#text");  // текстовое поле
-const list = document.querySelector("#list");                       // форма со списком todo
-const deadline = document.querySelector("#deadline");
-const sortUpButton = document.querySelector(".sort-up");            //кнопка сортировки по возрастанию
-const sortDownButton = document.querySelector(".sort-down");        //кнопка сортировки по возрастанию
+const createToDoEntity = (text, data) => ({
+  text: text,
+  isCompleted: false,
+  deadLine: data,
+});
 
-const array = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : []; //state
-const createToDoEntity = (textToDo, time) => ({ text: textToDo, isCompleted: false, timeToDo: time }) // функция массив объектов
+const save = () =>
+  !localStorage.setItem("toDo", JSON.stringify(array)) && array;
 
-const createToDo = (toDoEntity) => {   //функция создания туду в разметке
+const clear = () => array.splice(0, array.length) && save();
 
-    const newToDoContainer = document.createElement("label");   // создание лейбла 
-    const newToDoValue = document.createElement("input");       // создания инпута для чекбокса
-    const paragraph = document.createElement("p");              // создание p для текста
-    const spanTime = document.createElement("span");
-    const deleteButton = document.createElement("input");       // создание инпута для кнопки удаления
-    const hideCheckedButton = document.querySelector(".hide");
-    
-    const dlt = event => { // функция удаления элемента
-         
-        newToDoContainer.remove();                             //удаление элемента
-        // array.splice(0, array.length, ...array.filter(el => el !== paragraph.innerText));
-        const index = array.indexOf(toDoEntity);
-        (index !== -1) && (array.splice(index, 1));                                  
-        localStorage.setItem("toDo", JSON.stringify(array));     //обновление хранилища
-    };
+const sortUp = () =>
+  array.map((el) => el).sort((a, b) => b.deadLine.localeCompare(a.deadLine));
 
-    const handleChange = event => {                                //функция сохранения состояния чекбоксов
-        toDoEntity.isCompleted = !toDoEntity.isCompleted;
-        localStorage.setItem("toDo", JSON.stringify(array));
-    }
+const sortDown = () =>
+  array.map((el) => el).sort((a, b) => a.deadLine.localeCompare(b.deadLine));
 
-    paragraph.innerText = toDoEntity.text;
-    spanTime.innerText = toDoEntity.timeToDo;
-    spanTime.innerText =`${spanTime.innerText.substr(0, 2)}:${spanTime.innerText.substr(2,4)}`;
-    
-    deleteButton.addEventListener("click", dlt);            // доб слушатель кнопке удаления с функцией удаления элемента
-    deleteButton.setAttribute("type", "button");            // доб атрибуты тип 
-    deleteButton.setAttribute("value", "delete");                  // и значение
-    
-    newToDoContainer.append(newToDoValue, paragraph, spanTime, deleteButton); // добавляем checkbox и p внутрь label-контейнер
-    newToDoValue.setAttribute("type", "checkbox");                  // добавление атрибутов у инпутов
-    newToDoValue.checked = toDoEntity.isCompleted;
-    newToDoValue.addEventListener("change", handleChange);         //слушатель на событие change
-    //const str = toDoEntity.time;
-    //spanTime.innerHTML = `${str.substr(0, 2)}:${str.substr(2)}`
+const delDone = () =>
+  array.map((el) => el).filter((el) => el.isCompleted === false);
 
-    function hideChecked () {
-        if (newToDoValue.checked) {
-            newToDoContainer.classList.add("hided")
-        }
-    }
+const addEntity = (text, data) =>
+  array.push(createToDoEntity(text, data)) && save();
 
-    hideCheckedButton.addEventListener("click", hideChecked);
+//VIEW
+datePickerId.min = new Date().toISOString().split("T")[0];
 
+const createToDo = (toDoEntity) => {
+  const newToDoContainer = document.createElement("label");
+  const paragraph = document.createElement("p");
+  const deadLineData = document.createElement("time");
+  const buttonDelEl = document.createElement("button");
+  const newToDoValue = document.createElement("input");
+  newToDoContainer.setAttribute("class", "label");
+  newToDoValue.setAttribute("type", "checkbox");
+  newToDoValue.checked = toDoEntity.isCompleted;
 
-    return newToDoContainer;                        // возвращает готовый label-контейнер;
-}
+  paragraph.innerText = toDoEntity.text;
+  deadLineData.innerText = toDoEntity.deadLine;
+  buttonDelEl.setAttribute("type", "button");
+  buttonDelEl.setAttribute("id", "buttonDelEl");
+  buttonDelEl.setAttribute("class", "fa-solid fa-xmark");
 
-const handleAdd = event => { //функция добавления туду
-    const toDoEntity = createToDoEntity(newToDoInput.value, deadline.value.replace(":", ""));
-    array.push(toDoEntity);
-    list.append(createToDo(toDoEntity));     // добавляем в форму новый toDo, аргумент - то что ввели в поле текстового импута
-    localStorage.setItem("toDo", JSON.stringify(array));   
-    newToDoInput.value = "";                         // очищение текстового поля
-}
+  newToDoContainer.append(newToDoValue, paragraph, deadLineData, buttonDelEl);
 
-const clear = event => {    //функция очистки формы
-    
-    // Первый вариант
-    /*
-    const collChildren = []
-    for(let i = 0; i < list.children.length; i++){
-        collChildren.push(list.children.item(i));
-    }
-    collChildren.forEach(e => e.remove())
-    */
-
-    //Второй вариант
-    /*
-    list.replaceChildren(); 
-    */
-   
-    while (list.firstChild) list.firstChild.remove(); /*list.removeChild(list.firstChild); */
-
-    array.splice(0, array.length);
-    localStorage.removeItem("toDo");                          // очищает хранилище
-    //location.reload();
-}
-
-const sortingUp = event => {
-    array.sort((a,b) => a.timeToDo - b.timeToDo);
+  const deleteEl = () => {
+    newToDoContainer.remove();
+    const index = array.indexOf(toDoEntity);
+    array.splice(index, 1);
     localStorage.setItem("toDo", JSON.stringify(array));
-    list.replaceChildren();
-    list.append(...array.map(createToDo));
-}
+  };
 
-const sortingDown = event => {
-    array.sort((a,b) => b.timeToDo - a.timeToDo);
+  buttonDelEl.addEventListener("click", deleteEl);
+  newToDoValue.addEventListener("change", () => {
+    toDoEntity.isCompleted = !toDoEntity.isCompleted;
     localStorage.setItem("toDo", JSON.stringify(array));
-    list.replaceChildren();
-    list.append(...array.map(createToDo));
-}
+  });
+  return newToDoContainer;
+};
 
+const render = (list, sortArray) => {
+  list.replaceChildren();
+  list.append(...sortArray.map(createToDo));
+};
 
-//array.map(el=>createToDo(el)).forEach(el=>list.append(el));
-list.append(...array.map(createToDo))            // добавляет в форму элемент(ы) из массива array, который(-ые) проходят преобразование функцией создания todo
+//CONTROLER
 
-button.addEventListener("click", handleAdd);     // слушатель для кнопки добавить
-clearButton.addEventListener("click", clear);    // слушатель для кнопки удалить
-sortUpButton.addEventListener("click", sortingUp);
-sortDownButton.addEventListener("click", sortingDown);
+const buttonAdd = document.querySelector('input[value="add"]');
+const buttonDelAll = document.querySelector('input[value="clear"]');
+const newToDoInput = document.querySelector('input[type="text"]');
+const newToDoData = document.querySelector('input[type="date"]');
+const sortUpBtn = document.querySelector('input[value="up"]');
+const sortDownBtn = document.querySelector('input[value="down"]');
+const deleteDoneBtn = document.querySelector('input[value="done"]');
+const list = document.querySelector("#list"); 
+
+render(list, array);
+
+const handleAdd = () => {
+  if (newToDoInput.value && newToDoData.value) {
+    render(list, addEntity(newToDoInput.value, newToDoData.value));
+    newToDoInput.value = "";
+    newToDoData.value = "";
+  } else {
+    alert("Input field is empty");
+  }
+};
+
+const handleClear = () => render(list, clear());
+
+const handleUp = () => render(list, sortUp());
+
+const handleDown = () => render(list, sortDown());
+
+const handleDelDone = () => render(list, delDone());
+
+buttonAdd.addEventListener("click", handleAdd);
+buttonDelAll.addEventListener("click", handleClear);
+sortUpBtn.addEventListener("click", handleUp);
+sortDownBtn.addEventListener("click", handleDown);
+deleteDoneBtn.addEventListener("click", handleDelDone);
 
 /*
-1. v прокомментировать 
-2. v добавьте удаление всех элементов одной кнопкой (добавить ее в разметку "Очистить")
-3. v добавить к каждому элементу кнопку "удалить", которая удаляет элемент
-4. v сохранять состояние чекбоксов (JSON.stringify, JSON.parse)
---
-1. Добавить дедлайн
-2. Кнопки сортировки тасков (по убыванию и по возрастанию) - работают один раз
-3. Кнопка которая скрывает выполненные таски  - работают один раз (ДЗ на след вторник)
+
+сделать так, что бы сортировки можно было включать/выключать
+
+при этом две разные нельзя включить одновременно
+
+тоже самое с фильтрацией выполненых
+
+при этом при перезагрузке, включённость/выключенность фильтра и сортировки должна сохраняться
+
+текст вписанные в текстовое поле - тоже должен сохраняться при перезагрузке 
+даже, в случае, когда тудушка не была добавлена
+
 */
