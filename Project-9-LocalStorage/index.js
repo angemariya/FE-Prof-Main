@@ -1,7 +1,5 @@
 //MODEL
-const array = localStorage.getItem("toDo")
-  ? JSON.parse(localStorage.getItem("toDo"))
-  : [];
+const array = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : [];
 
 const createToDoEntity = (text, data) => ({
   text: text,
@@ -12,7 +10,8 @@ const createToDoEntity = (text, data) => ({
 const save = () =>
   !localStorage.setItem("toDo", JSON.stringify(array)) && array;
 
-const clear = () => array.splice(0, array.length) && save();
+const clear = () => 
+  array.splice(0, array.length) && save();
 
 const sortUp = () =>
   array.map((el) => el).sort((a, b) => b.deadLine.localeCompare(a.deadLine));
@@ -90,13 +89,13 @@ const handleAdd = () => {
   }
 };
 
-const handleClear = () => render(list, clear());
+const handleClear = () => render(list, clear()); //ф-я очистки
 
-const handleUp = () => render(list, sortUp());
+const handleUp = () => render(list, sortUp()); // ф-я сортировки по возрастанию
 
-const handleDown = () => render(list, sortDown());
+const handleDown = () => render(list, sortDown()); // ф-я сортировки по убыванию
 
-const handleDelDone = () => render(list, delDone());
+const handleDelDone = () => render(list, delDone()); //ф-я скрытия выполненных
 
 buttonAdd.addEventListener("click", handleAdd);
 buttonDelAll.addEventListener("click", handleClear);
