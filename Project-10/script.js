@@ -33,47 +33,62 @@ function createState (arr, idEl = 0) {
 
 //view
 
-const render = (root, localState) => {
+const render = (root, localState, elements) => {
+
   const imageElement = document.createElement("img");
-  imageElement.setAttribute("src", localState.array[localState.idEl]);
+  imageElement.setAttribute("src", localState.array[localState.idEl])
+  elements.triangleLeft.innerText = "left";
+  elements.triangleRight.innerText = "right";
+
+  elements.boxForImage.replaceChildren();
+  elements.boxForImage.append(imageElement);
+
   root.replaceChildren();
-  root.append(imageElement);
+  root.append(elements.triangleLeft, elements.boxForImage, elements.triangleRight);
 };
 
 //controller
 
-const findElements = (suffix) => ({
-  triangleLeft: document.querySelector(`.triangle${suffix}.left`),
-  triangleRight: document.querySelector(`.triangle${suffix}.right`),
-  boxForImage: document.querySelector(`.boxForImage${suffix}`)             //root
+const createElements = () => ({
+  triangleLeft: document.createElement("button"),
+  triangleRight: document.createElement("button"),
+  boxForImage: document.createElement("div")
 });
 
-const createActions = (box, localState) => ({
-  start: () => render(box, localState),
+const createActions = (box, localState, elements) => ({
+  start: () => render(box, localState, elements),
 
   moveLeft: () => {
     localState.idEl =
       localState.idEl === 0 ? localState.array.length - 1 : localState.idEl - 1;
-    render(box, localState);
+    render(box, localState, elements);
   },
 
   moveRight: () => {
     localState.idEl =
       localState.idEl === localState.array.length - 1 ? 0 : localState.idEl + 1;
-    render(box, localState);
+    render(box, localState, elements);
   },
 });
 
-const sliderComponate = (state, suffix) => {
-  const elements = findElements(suffix);
-  const actions = createActions(elements.boxForImage, state);
+const sliderComponate = (state) => {
+  const elements = createElements();
+  const root = document.createElement('div');
+  root.classList.add("root")
+  document.body.append(root);
+
+  const actions = createActions(root, state, elements);
   elements.triangleLeft.addEventListener("click", actions.moveLeft);
   elements.triangleRight.addEventListener("click", actions.moveRight);
   actions.start();
 };
 
-sliderComponate(createState(arrImage), "");
-sliderComponate(createState(arrImage2), "2");
-sliderComponate(createState(arrImage3), "3");
+const finish = (arr) => {
+  sliderComponate(createState(arr))
+}
+
+finish(arrImage);
+finish(arrImage2);
+finish(arrImage3);
 
 //localState - объект состояния
