@@ -14,13 +14,13 @@ const clear = () =>
   array.splice(0, array.length) && save();
 
 const sortUp = () =>
-  array.map((el) => el).sort((a, b) => b.deadLine.localeCompare(a.deadLine));
+  [...array].sort((a, b) => b.deadLine.localeCompare(a.deadLine));
 
 const sortDown = () =>
-  array.map((el) => el).sort((a, b) => a.deadLine.localeCompare(b.deadLine));
+  [...array].sort((a, b) => a.deadLine.localeCompare(b.deadLine));
 
 const delDone = () =>
-  array.map((el) => el).filter((el) => el.isCompleted === false);
+  array.filter((el) => el.isCompleted === false);
 
 const addEntity = (text, data) =>
   array.push(createToDoEntity(text, data)) && save();
@@ -75,6 +75,7 @@ const newToDoData = document.querySelector('input[type="date"]');
 const sortUpBtn = document.querySelector('input[value="up"]');
 const sortDownBtn = document.querySelector('input[value="down"]');
 const deleteDoneBtn = document.querySelector('input[value="done"]');
+const sort = document.querySelector('input[value="sort"]'); //кнопка выключения сортировки
 const list = document.querySelector("#list"); 
 
 render(list, array);
@@ -114,6 +115,7 @@ deleteDoneBtn.addEventListener("click", handleDelDone);
 при этом при перезагрузке, включённость/выключенность фильтра и сортировки должна сохраняться
 
 текст вписанные в текстовое поле - тоже должен сохраняться при перезагрузке 
+
 даже, в случае, когда тудушка не была добавлена
 
 */
