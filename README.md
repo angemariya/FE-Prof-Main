@@ -6,3 +6,4 @@ Homeworks and class lessons from the course professional frontend development
 4. [Twitter](https://angemariya.github.io/FE-Prof-Main/Project-5%20Twitter/index.html)
 5. [To Do App](https://angemariya.github.io/FE-Prof-Main/Project-9-LocalStorage/index.html)
 6. [Slider JS](https://angemariya.github.io/FE-Prof-Main/Project-10/index.html)
+7. [Sea Battle](https://angemariya.github.io/FE-Prof-Main/SeaBattle/index.html)
