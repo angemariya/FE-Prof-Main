@@ -25,6 +25,10 @@ const delDone = () =>
 const addEntity = (text, data) =>
   array.push(createToDoEntity(text, data)) && save();
 
+const toggleSorting = () => {
+  array.
+}
+
 //VIEW
 datePickerId.min = new Date().toISOString().split("T")[0];
 
@@ -42,7 +46,6 @@ const createToDo = (toDoEntity) => {
   deadLineData.innerText = toDoEntity.deadLine;
   buttonDelEl.setAttribute("type", "button");
   buttonDelEl.setAttribute("id", "buttonDelEl");
-  buttonDelEl.setAttribute("class", "fa-solid fa-xmark");
 
   newToDoContainer.append(newToDoValue, paragraph, deadLineData, buttonDelEl);
 
@@ -98,11 +101,14 @@ const handleDown = () => render(list, sortDown()); // ф-я сортировки
 
 const handleDelDone = () => render(list, delDone()); //ф-я скрытия выполненных
 
+const toggleSort = () => render(list, toggleSorting());
+
 buttonAdd.addEventListener("click", handleAdd);
 buttonDelAll.addEventListener("click", handleClear);
 sortUpBtn.addEventListener("click", handleUp);
 sortDownBtn.addEventListener("click", handleDown);
 deleteDoneBtn.addEventListener("click", handleDelDone);
+sort.addEventListener("click", toggleSort)
 
 /*
 
