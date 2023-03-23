@@ -10,16 +10,14 @@ const state = {
 
 //view
 
-const calculateElements = (root, localState) => {
+const calculateElements = (root, localState, el) => {
     //вычислим, что мы отрисовываем исходя из нашего состояния
     const divArray = [];
     for (let j = 0; j < 10; j++) {        
         for (let i = 0; i < 10; i++) {
             const divRow = document.createElement("div");
             divRow.className = "field";
-            divRow.addEventListener("click",()=>{
-                console.log([i+1], [j+1]);
-            })
+            divRow.addEventListener("click", el.getCoordinate)
             divArray.push(divRow);
         }
     }
@@ -37,6 +35,9 @@ const getActions = (localState, root) => ({
   start: () => {
     render(localState, root);
   },
+  getCoordinate: () => {
+    console.log([i+1], [j+1])
+  }
 });
 
 const root = document.querySelector("#root");

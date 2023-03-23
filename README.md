@@ -1,9 +1,7 @@
 Homeworks and class lessons from the course professional frontend development
 <br>
-1. [Project 2 Grid Layout](https://angemariya.github.io/FE-Prof-Main/Project-2/index.html)
-2. [Project 3 Grid Layout](https://angemariya.github.io/FE-Prof-Main/Project-3/index.html)
-3. [Project 4 Grid Layout](https://angemariya.github.io/FE-Prof-Main/Project-4/index.html)
-4. [Twitter](https://angemariya.github.io/FE-Prof-Main/Project-5%20Twitter/index.html)
-5. [To Do App](https://angemariya.github.io/FE-Prof-Main/Project-9-LocalStorage/index.html)
-6. [Slider JS](https://angemariya.github.io/FE-Prof-Main/Project-10/index.html)
-7. [Sea Battle](https://angemariya.github.io/FE-Prof-Main/SeaBattle/index.html)
+
+1. [Twitter](https://angemariya.github.io/FE-Prof-Main/Twitter/index.html)
+2. [To Do App](https://angemariya.github.io/FE-Prof-Main/LocalStorage/index.html)
+3. [Carousel Pure JS](https://angemariya.github.io/FE-Prof-Main/Carousel/index.html)
+4. [Sea Battle](https://angemariya.github.io/FE-Prof-Main/SeaBattle/index.html)
