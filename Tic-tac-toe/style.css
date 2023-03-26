@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    width: 150px;
+    height: 150px;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    outline: 1px solid black;
+}
