@@ -26,7 +26,7 @@ const addEntity = (text, data) =>
   array.push(createToDoEntity(text, data)) && save();
 
 const toggleSorting = () => {
-  array.
+  
 }
 
 //VIEW
