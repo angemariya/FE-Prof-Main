@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#root {
+ margin-top: 50px;   
+}
+
+p {
+    margin-left: 10px;
+}
+
+li {
+    width: 215px;
+   list-style: none;
+   display: flex;
+}
+
+button {
+    display: inline-block;
+    margin-right: 100px;
+}
+

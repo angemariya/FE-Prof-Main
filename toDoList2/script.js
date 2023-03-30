@@ -1,6 +1,9 @@
 //model
 const state = [];
 
+const readFromLocalStorage = (key) => JSON.parse(localStorage.getItem(key)) || [];
+const writeLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+
 //view
 
 const createElements = (localState, actions) => {
@@ -16,8 +19,9 @@ const createElements = (localState, actions) => {
     form.append(input, inputBtn);
 
     const ul = document.createElement('ul');
+    ul.innerHTML = "Your ToDos for today"
 
-    const lis = localState.map (el => {
+    const lis = localState.map(el => {
         const li = document.createElement("li");
         const checkbox = document.createElement("input");
         checkbox.setAttribute("type", "checkbox");
