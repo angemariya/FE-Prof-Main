@@ -1,36 +1,59 @@
 //model
-const state = [];
+const state = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : [];
 
-const readFromLocalStorage = (key) => JSON.parse(localStorage.getItem(key)) || [];
-const writeLocalStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+const createToDoEntity = (text, data) => ({
+  text: text,
+  isCompleted: false,
+  deadLine: data
+});
 
-//view
+
+//view --------------------------
 
 const createElements = (localState, actions) => {
     const form = document.createElement("form");
-    const input = document.createElement("input");
-    input.setAttribute("type", "text");
+    const inputText = document.createElement("input");
+    inputText.setAttribute("type", "text");
+    inputText.setAttribute("placeholder", "Enter your todo")
     
-    const inputBtn = document.createElement("input");
-    inputBtn.setAttribute("type", "button");
-    inputBtn.setAttribute("value", "add");
+    const addButton = document.createElement("input");
+    addButton.setAttribute("type", "button");
+    addButton.setAttribute("value", "add");
+    addButton.classList.add("add-button");
     
-    inputBtn.addEventListener("click", () => actions.addToDo(input.value));
-    form.append(input, inputBtn);
+    const inputTime = document.createElement("input");
+    inputTime.setAttribute("type", "date");
+    inputTime.classList.add("input-time");
+
+    addButton.addEventListener("click", () => actions.addToDo(inputText.value, inputTime.value));
+    form.append(inputText, inputTime, addButton);
 
     const ul = document.createElement('ul');
-    ul.innerHTML = "Your ToDos for today"
+    ul.classList.add("list");
 
-    const lis = localState.map(el => {
+    const lis = localState.map((el,i) => {
         const li = document.createElement("li");
+        const checkboxWrap = document.createElement("div");
+        checkboxWrap.classList.add("checkbox-wrapper-1");
         const checkbox = document.createElement("input");
+        checkbox.setAttribute("id", `example-${i}`);
+        checkbox.classList.add("substituted");
         checkbox.setAttribute("type", "checkbox");
-        const text = document.createElement("p");
-        text.innerHTML = el.toDo;
+        checkbox.setAttribute("aria-hidden", "true");
+        const text = document.createElement("label");
+        text.classList.add("text");
+        text.setAttribute("for", `example-${i}`);
+        text.innerHTML = el.text;
+
+        checkboxWrap.append(checkbox, text);
+
         const time = document.createElement("time");
+        time.innerHTML = el.deadLine;
         const deleteButton = document.createElement("button");
         deleteButton.innerHTML = "delete";
-        li.append(checkbox, text, time, deleteButton);
+        deleteButton.addEventListener("click", ()=> actions.deleteFn(el));
+        deleteButton.classList.add("delete");
+        li.append(checkboxWrap, time, deleteButton);
         return li;
     })
 
@@ -46,16 +69,28 @@ const render = (localState, root, actions) => {
     root.append(...elements);
 }
 
-//controller
+//controller -----------
 
 const createActions = (localState, root) => {
     const actions = {
-    start: () => render(localState, root, actions),
-    addToDo: (value) => {
-        localState.push({toDo: value})
-        render(localState, root, actions);
-        //сохраняем в ЛС
-    },
+        start: () => render(localState, root, actions),
+
+        save: () => !localStorage.setItem("toDo", JSON.stringify(localState)) && localState,
+
+        addToDo: (text, date) => {
+            localState.push(createToDoEntity(text, date));
+            render(localState, root, actions);
+            actions.save();
+        },
+
+        deleteFn: (el) => {
+            const index = localState.indexOf(el);
+            (index !== -1) && (localState.splice(index, 1));
+            render(localState, root, actions);                                  
+            localStorage.setItem("toDo", JSON.stringify(localState));   
+            //обновление хранилища
+        }
+
     }
     
     return actions;
