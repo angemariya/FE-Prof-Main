@@ -33,7 +33,7 @@ async function someAsyncFnB() {
 function someAsyncFnB() {
     return someAsyncFnA.then(a=> someAsyncFnB().then(b => b + a))
 }
-*/
+
 async function myAge() {
     return 32
 }
@@ -62,5 +62,5 @@ const title = async() => {
 }
 
 console.log(title())
-
+*/
 //result = "grand".repeat(countAge/20) + "mother" -- метод строк
