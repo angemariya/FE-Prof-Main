@@ -1,0 +1,39 @@
+let promise = new Promise((res, rej) => {
+    setTimeout(() => {
+        let a = 100
+        // res(a)
+        rej('Error!')
+    }, 500)
+})
+
+async function asyncFunc(){
+    try {
+      let a = await promise;
+    } catch {
+        console.log("Error!");
+    }   
+}
+
+asyncFunc()
+
+let url = "https://jsonplaceholder.typicode.com/users";
+
+fetch(url)
+    .then(res=>res.json()
+    .then(data=>{
+        console.log(data);
+        render(data)
+    }))
+
+const render = (state) => {
+    const root = document.querySelector("#root");
+    const render = state.map(el=>{
+        const name = document.createElement("p");
+        name.innerHTML = el.name;
+        const username = document.createElement("p");
+        username.innerHTML = el.username;
+        
+        root.append(name, username);
+    })
+    return render;
+}
