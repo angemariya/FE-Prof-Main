@@ -14,7 +14,7 @@ async function asyncFunc(){
     }   
 }
 
-asyncFunc()
+asyncFunc();
 
 let url = "https://jsonplaceholder.typicode.com/users";
 
@@ -37,3 +37,14 @@ const render = (state) => {
     })
     return render;
 }
+/*
+const getData = async (fn) => {
+    const url = 'https://reqres.in/api/users'
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(data);
+    data.data.forEach(el => users.append(fn(el.first_name, el.last_name)));
+}
+*/
+
+// от fetch(url) приходит промис объект который содержить headers. Там нас интересует метож .status и body (обрабат. )
