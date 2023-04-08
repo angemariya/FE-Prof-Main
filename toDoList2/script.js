@@ -7,7 +7,6 @@ const createToDoEntity = (text, data) => ({
   deadLine: data
 });
 
-
 //view --------------------------
 
 const createElements = (localState, actions) => {
@@ -31,7 +30,7 @@ const createElements = (localState, actions) => {
     const ul = document.createElement('ul');
     ul.classList.add("list");
 
-    const lis = localState.map((el,i) => {
+    const lis = localState.map((el,i) => { //поставить фильтрацию перед map
         const li = document.createElement("li");
         const checkboxWrap = document.createElement("div");
         checkboxWrap.classList.add("checkbox-wrapper-1");
@@ -87,7 +86,7 @@ const createActions = (localState, root) => {
             const index = localState.indexOf(el);
             (index !== -1) && (localState.splice(index, 1));
             render(localState, root, actions);                                  
-            localStorage.setItem("toDo", JSON.stringify(localState));   
+            actions.save();
             //обновление хранилища
         }
 
