@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#root {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://images.unsplash.com/photo-1498429089284-41f8cf3ffd39?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=2bc67e5c6ee0e90d892e35a7652fe6c9"),
+        50% 50%,
+        no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.js-clock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.js-clock-title {
+    color: white;
+    font-size: 1000%;
+    font-weight: bold;
+}
+
+.js-greeting {
+    color: white;
+
+}
