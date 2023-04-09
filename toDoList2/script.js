@@ -87,7 +87,6 @@ const createActions = (localState, root) => {
             (index !== -1) && (localState.splice(index, 1));
             render(localState, root, actions);                                  
             actions.save();
-            //обновление хранилища
         }
 
     }
