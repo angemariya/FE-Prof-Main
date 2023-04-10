@@ -1,7 +1,7 @@
 //model
 
 const state = {
-  name: ""
+  userName: "Maria"
 };
 
 
@@ -20,11 +20,17 @@ const createElements = (localState, actions) => {
     clockTitle.innerHTML = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
   });
 
-  const greeting = document.createElement("h2");
-  greeting.classList.add("js-greeting");
-  greeting.innerHTML = "Hello,  "
+  const form = document.createElement("form");
+  form.classList.add("form", "form-hidden");
+  const text = document.createElement("input");
+  text.setAttribute("type", "text");
 
-  clockWrap.append(clockTitle, greeting);
+
+  const greeting = document.createElement("h2");
+  greeting.classList.add("js-greeting", "greeting");
+  greeting.innerHTML = `Hello, ${localState.userName}`;
+
+  clockWrap.append(clockTitle, form, greeting);
 
   return [clockWrap]
 };
@@ -44,6 +50,11 @@ const getActions = (localState, root) => ({
   updateDate: (fn) => {
     setInterval(fn, 1000);
   },
+
+  save: () => {
+
+  }, 
+
 });
 
 const root = document.querySelector("#root");
