@@ -36,7 +36,7 @@
 
 }
 
-.form input {
+.username-input {
     border: none;
     background-color: none;
     background: none;
@@ -45,6 +45,7 @@
     font-size: 2em;
     line-height: 1.5;
     color: white;
+    text-align: center;
 }
 
 .modal {

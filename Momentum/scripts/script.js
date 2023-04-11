@@ -1,9 +1,5 @@
 //model
-
-const state = {
-  userName: "Maria"
-};
-
+const state = localStorage.getItem("username") || "";
 //view
 
 const createElements = (localState, actions) => {
@@ -23,15 +19,21 @@ const createElements = (localState, actions) => {
   form.classList.add("form");
   const text = document.createElement("input");
   text.setAttribute("type", "text");
+  text.classList.add("username-input");
 
+  form.addEventListener("submit", ()=>actions.addUserName(event, text.value));
   form.append(text);
-  form.addEventListener("submit", (event)=>{
-    event.preventDefault();
-  })
 
   const greeting = document.createElement("h2");
   greeting.classList.add("js-greeting", "greeting");
-  greeting.innerHTML = `Hello, ${localState.userName}`;
+  
+  localState === "" && form.classList.remove("modal-close");
+  localState !== "" && form.classList.add("modal-close");
+  if (!localState) {
+    text.setAttribute("placeholder", "Enter your name");
+  } else {
+    greeting.innerHTML = `Hello, ${localState}!`;
+  }
 
   clockWrap.append(clockTitle, form, greeting);
 
@@ -50,13 +52,25 @@ const getActions = (localState, root) => ({
   start: () => {
     render(localState, root, actions);
   },
+
   updateDate: (fn) => {
     setInterval(fn, 1000);
   },
 
-  save: () => {
-    localStorage.setItem("username")
-  }, 
+  save: (text) => {
+    localStorage.setItem("username", text);
+  },
+
+  getName:() => {
+    localStorage.getItem("username");
+  },
+
+  addUserName: (event, text) => {
+    event.preventDefault();
+    localState = text;
+    actions.save(text);
+    render(localState, root, actions);
+  },
 
 });
 
