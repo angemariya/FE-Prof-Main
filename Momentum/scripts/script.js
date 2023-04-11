@@ -4,7 +4,6 @@ const state = {
   userName: "Maria"
 };
 
-
 //view
 
 const createElements = (localState, actions) => {
@@ -21,10 +20,14 @@ const createElements = (localState, actions) => {
   });
 
   const form = document.createElement("form");
-  form.classList.add("form", "form-hidden");
+  form.classList.add("form");
   const text = document.createElement("input");
   text.setAttribute("type", "text");
 
+  form.append(text);
+  form.addEventListener("submit", (event)=>{
+    event.preventDefault();
+  })
 
   const greeting = document.createElement("h2");
   greeting.classList.add("js-greeting", "greeting");
@@ -52,7 +55,7 @@ const getActions = (localState, root) => ({
   },
 
   save: () => {
-
+    localStorage.setItem("username")
   }, 
 
 });
