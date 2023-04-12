@@ -48,7 +48,7 @@
     text-align: center;
 }
 
-.modal {
+#modal {
     height: auto;
     width: 350px;
     position: absolute;
@@ -56,12 +56,26 @@
     right: 10px;
     background-color: #fff;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .modal-open {
     display: flex;
 }
 
-.modal-close {
+.close {
     display: none;
+}
+
+.to-do-list {
+    list-style: none;
+    margin: 10px;
+}
+
+.to-do-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+    margin-left: 10px;
 }

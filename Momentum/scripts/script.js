@@ -21,14 +21,14 @@ const createElements = (localState, actions) => {
   text.setAttribute("type", "text");
   text.classList.add("username-input");
 
-  form.addEventListener("submit", ()=>actions.addUserName(event, text.value));
+  form.addEventListener("submit", (event)=>actions.addUserName(event, text.value));
   form.append(text);
 
   const greeting = document.createElement("h2");
   greeting.classList.add("js-greeting", "greeting");
   
-  localState === "" && form.classList.remove("modal-close");
-  localState !== "" && form.classList.add("modal-close");
+  localState === "" && form.classList.remove("close");
+  localState !== "" && form.classList.add("close");
   if (!localState) {
     text.setAttribute("placeholder", "Enter your name");
   } else {
