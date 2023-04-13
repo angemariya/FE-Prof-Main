@@ -20,6 +20,7 @@ const calculateElementsModal = (localState, actionsModal) => {
     form.classList.add("modal-form");
     const textToDo = document.createElement("input");
     textToDo.setAttribute("type", "text");
+    textToDo.setAttribute("placeholder", "enter your todo")
     textToDo.classList.add("to-do-input")
 
     
