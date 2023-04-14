@@ -79,3 +79,10 @@
     outline: none;
     margin-left: 10px;
 }
+
+#weather {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+}
