@@ -1,6 +1,11 @@
 //model
-const state = localStorage.getItem("username") || "";
+
+const state = JSON.parse(localStorage.getItem("user")) || {};
 //view
+
+const createObj = (name) => ({
+  username: name
+})
 
 const createElements = (localState, actions) => {
   const clockWrap = document.createElement("div");
@@ -17,23 +22,29 @@ const createElements = (localState, actions) => {
 
   const form = document.createElement("form");
   form.classList.add("form");
-  const text = document.createElement("input");
-  text.setAttribute("type", "text");
-  text.classList.add("username-input");
+  const usernameInput = document.createElement("input");
+  usernameInput.setAttribute("type", "text");
+  usernameInput.classList.add("username-input");
 
-  form.addEventListener("submit", (event)=>actions.addUserName(event, text.value));
-  form.append(text);
+  form.addEventListener("submit", (event)=>actions.addUserName(event, usernameInput.value));
+  form.append(usernameInput);
 
   const greeting = document.createElement("h2");
   greeting.classList.add("js-greeting", "greeting");
   
-  localState === "" && form.classList.remove("close");
-  localState !== "" && form.classList.add("close");
-  if (!localState) {
-    text.setAttribute("placeholder", "Enter your name");
-  } else {
-    greeting.innerHTML = `Hello, ${localState}!`;
-  }
+ localState["username"] === undefined && form.classList.remove("close");
+
+  if (localState["username"] !== undefined) {
+    form.classList.add("close") 
+    greeting.innerHTML = `Hello, ${localState["username"]}!`}
+  
+    
+    
+  
+
+
+  usernameInput.setAttribute("placeholder", "Enter your name");
+  
 
   clockWrap.append(clockTitle, form, greeting);
 
@@ -57,21 +68,16 @@ const getActions = (localState, root) => ({
     setInterval(fn, 1000);
   },
 
-  save: (text) => {
-    localStorage.setItem("username", text);
+  save: () => {
+    localStorage.setItem("user", JSON.stringify(localState));
   },
 
-  getName:() => {
-    localStorage.getItem("username");
-  },
-
-  addUserName: (event, text) => {
+  addUserName: (event, name) => {
     event.preventDefault();
-    localState = text;
-    actions.save(text);
+    localState = createObj(name); //нет сохранения в state ?
+    actions.save();
     render(localState, root, actions);
   },
-
 });
 
 const root = document.querySelector("#root");
