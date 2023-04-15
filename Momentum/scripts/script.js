@@ -38,11 +38,6 @@ const createElements = (localState, actions) => {
     form.classList.add("close") 
     greeting.innerHTML = `Hello, ${localState["username"]}!`}
   
-    
-    
-  
-
-
   usernameInput.setAttribute("placeholder", "Enter your name");
   
 
