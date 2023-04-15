@@ -50,13 +50,33 @@
 
 #modal {
     height: auto;
-    width: 350px;
+    min-width: 230px;
     position: absolute;
-    bottom: 10px;
+    bottom: 50px;
     right: 10px;
-    background-color: #fff;
-    padding: 5px;
+    padding: 15px;
     border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(43, 43, 43, 0.568);
+}
+
+.modal-header {
+    margin-bottom: 5px;
+    color: rgb(165, 165, 165);
+}
+
+.modal-form {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.modal-wrapper {
+    position: relative;
+    padding-bottom: 50px;
 }
 
 .modal-open {
@@ -69,15 +89,28 @@
 
 .to-do-list {
     list-style: none;
-    margin: 10px;
 }
 
 .to-do-input {
     background: none;
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    color: #fff;
     outline: none;
     margin-left: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    padding-left: 10px; 
+
+}
+
+.li-todo {
+    padding-top: 5px;
+}
+
+.li-todo:first-child {
+    padding-top: 10px;
 }
 
 #weather {
