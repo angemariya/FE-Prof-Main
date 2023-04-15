@@ -1,12 +1,16 @@
 //model
 
-const stateModal = [];
+const stateModal = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : [];
 
 
 const createEntities = (text) => ({
     text: text,
     isChecked: false
 })
+
+const saveToLStorage = () => {
+    localStorage.setItem("toDo", JSON.stringify(stateModal));
+}
 
 //view
 
@@ -34,6 +38,7 @@ const calculateElementsModal = (localState, actionsModal) => {
         const li = document.createElement("li");
         li.classList.add("li-todo")
         li.innerHTML = el.text;
+        li.addEventListener("click",() => actionsModal.isDone(li));
         return li;
     })
     
@@ -56,12 +61,17 @@ const getActionsModal = (localState, rootModal) => ({
     start: () => {
         renderModal(localState, rootModal, actionsModal);
     },
+    
     submitForm: (event, text) => {
         event.preventDefault();
         localState.push(createEntities(text));
+        saveToLStorage();
         renderModal(localState, rootModal, actionsModal);
     }, 
-    
+    isDone: (tag) => {
+        tag.classList.toggle("li-done");
+        localState.find()
+    }
 })
 
 const rootModal = document.querySelector('#modal');
