@@ -3,9 +3,9 @@
 const stateModal = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : [];
 
 
-const createEntities = (text) => ({
+const createEntities = (text, status) => ({
     text: text,
-    isChecked: false
+    isChecked: status
 })
 
 const saveToLStorage = () => {
@@ -38,6 +38,7 @@ const calculateElementsModal = (localState, actionsModal) => {
         const li = document.createElement("li");
         li.classList.add("li-todo")
         li.innerHTML = el.text;
+        el.isChecked === true ? li.classList.add("li-done") : li.classList.remove("li-done");
         li.addEventListener("click",() => actionsModal.isDone(li));
         return li;
     })
@@ -64,13 +65,18 @@ const getActionsModal = (localState, rootModal) => ({
     
     submitForm: (event, text) => {
         event.preventDefault();
-        localState.push(createEntities(text));
+        localState.push(createEntities(text, false));
         saveToLStorage();
         renderModal(localState, rootModal, actionsModal);
     }, 
     isDone: (tag) => {
-        tag.classList.toggle("li-done");
-        localState.find()
+        localState.map(el=>{
+            if (el.text === tag.innerHTML){
+              el.isChecked = true  
+            }
+        });
+        saveToLStorage();
+        renderModal(localState, rootModal, actionsModal);
     }
 })
 
