@@ -107,6 +107,11 @@
 
 .li-todo {
     padding-top: 5px;
+    cursor:pointer;
+}
+
+.li-done {
+    text-decoration: line-through;
 }
 
 .li-todo:first-child {
