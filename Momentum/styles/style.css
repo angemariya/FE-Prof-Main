@@ -7,8 +7,8 @@
 
 #root {
     background:
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("https://momentum.photos/img/bddf42be-dfa0-48f7-8ce4-4973360f8fe9.jpg"),
+        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)),
+        url("https://images.unsplash.com/photo-1569402928543-87a35efc0606?ixlib=rb-1.2.1&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&ixid=eyJhcHBfaWQiOjcwOTV9"),
         no-repeat;
     background-position: center;
     background-size: cover;
@@ -107,15 +107,24 @@
 
 .li-todo {
     padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-text {
     cursor:pointer;
 }
 
-.li-done {
-    text-decoration: line-through;
+.fa-solid {
+    cursor:pointer;
 }
 
 .li-todo:first-child {
     padding-top: 10px;
+}
+
+.todo-done {
+    text-decoration: line-through;
 }
 
 #weather {
