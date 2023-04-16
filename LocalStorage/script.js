@@ -119,10 +119,3 @@ newToDoValue.setAttribute("type", "checkbox");
 checkbox.type = "checkbox";
 */
 
-//
-
-//CONTROLER
-
-// const hidenDone = array
-//   .map((el) => el)
-//   .filter((el) => el.isCompleted === false);
