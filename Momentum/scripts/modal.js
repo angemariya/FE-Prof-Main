@@ -19,7 +19,7 @@ const calculateElementsModal = (localState, actionsModal) => {
     const modalHeader = document.createElement("span");
     modalHeader.innerHTML = "Today";
     modalHeader.classList.add("modal-header")
-    
+
     const form = document.createElement("form");
     form.classList.add("modal-form");
 
@@ -40,6 +40,7 @@ const calculateElementsModal = (localState, actionsModal) => {
         const textToDo = document.createElement("span");
         textToDo.innerHTML = el.text;
         textToDo.classList.add("todo-text");
+        textToDo.setAttribute("title", "click to mark as completed")
         textToDo.addEventListener("click",() => actionsModal.changeStatus(textToDo));
 
         const iconDelete = document.createElement("i");
