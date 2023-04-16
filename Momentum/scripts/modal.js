@@ -1,7 +1,5 @@
 //model
-
 const stateModal = localStorage.getItem("toDo") ? JSON.parse(localStorage.getItem("toDo")) : [];
-
 
 const createEntities = (text, status) => ({
     text: text,
@@ -27,10 +25,8 @@ const calculateElementsModal = (localState, actionsModal) => {
     textToDo.setAttribute("placeholder", "enter your todo")
     textToDo.classList.add("to-do-input")
 
-    
     const listToDo = document.createElement("ul");
     listToDo.classList.add("to-do-list");
-    
     
     form.addEventListener("submit", (event)=>actionsModal.submitForm(event, textToDo.value));
     

@@ -50,6 +50,5 @@ function error () {
 }
 getPosition();
 
-
 // http://dataservice.accuweather.com/forecasts/v1/daily/1day/sVjOLnlwq51hE3UfL5qlnuMysh1V8EqG&metric=true 
 //if there is no data in localStorage getPosition() will be invoke, else data will be parsed from LocalStorage
