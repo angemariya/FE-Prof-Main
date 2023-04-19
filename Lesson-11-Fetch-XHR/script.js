@@ -1,5 +1,7 @@
-const state = {
-    currentID: 1
+const state = localStorage.getItem("id") ? {currentID: JSON.parse(localStorage.getItem("id"))} : {currentID: 1}
+
+const saveToLS = (id) => {
+    localStorage.setItem("id", id)
 }
 
 const getUserData = async (id) => {
@@ -7,28 +9,25 @@ const getUserData = async (id) => {
     const postsURL = `https://jsonplaceholder.typicode.com/posts?userId=${id}`;
     const usersArr = "https://jsonplaceholder.typicode.com/users";
 
-    const userData = {};
     const [userResponse, postsResponse, usersResponse] = await Promise.all([fetch(usersURL), fetch(postsURL), fetch(usersArr)]); 
     if (userResponse.ok && postsResponse.ok && usersResponse.ok) {
        const [user, posts, users] = await Promise.all([userResponse.json(), postsResponse.json(), usersResponse.json()])
-        userData.user = user;
-        userData.posts = posts;
-        userData.users = users;
+        state.user = user;
+        state.posts = posts;
+        state.users = users;
     }
-    return userData;
 }
 
-const createElements = async(localState, actions) => {
-    const data = await getUserData(localState.currentID); //как передать промис в createElements без использования функции getUserData внутри нее ?
+const createElements = (localState, actions) => {
     const userContainer = document.createElement("div");
     userContainer.classList.add("user");
     const userName = document.createElement("p");
     const userEmail = document.createElement("p");
-    userName.innerHTML = data.user.name;
-    userEmail.innerHTML = data.user.email;
+    userName.innerHTML = localState.user.name;
+    userEmail.innerHTML = localState.user.email;
     userContainer.append(userName, userEmail);
 
-    const postsArr = data.posts.map(el=> {
+    const postsArr = localState.posts.map(el=> {
         const item = document.createElement("div");
         item.classList.add("item");
         const postTitle = document.createElement("p");
@@ -45,32 +44,46 @@ const createElements = async(localState, actions) => {
 
     const leftBtn = document.createElement("button");
     leftBtn.innerHTML = "<--";
-    leftBtn.addEventListener("click", ()=> {
-        let count = data.user.id > 1 ? data.user.id - 1 : 1;
-
-    });
+    leftBtn.addEventListener("click", ()=> actions.moveLeft());
     const rightBtn = document.createElement("button");
     rightBtn.innerHTML = "-->";
     rightBtn.addEventListener("click", ()=> actions.moveRight());
     const btnWrapper = document.createElement("div");
     btnWrapper.append(leftBtn, rightBtn);
     const arr = [];
-    arr.push(userContainer, posts, btnWrapper)
+    arr.push(userContainer, posts, btnWrapper);
     return arr;
 }
 
-const render = async (localState, root, actions) => {
-    const elements = await createElements(localState, actions);
+const render = (localState, root, actions) => {
+    const elements = createElements(localState, actions);
     root.replaceChildren();
     root.append(...elements);
 }
 
 const getActions = (localState, root) => ({
-    start: () => {
+    start: async () => {
+        await getUserData(localState.currentID);
+        console.log(localState);
+        saveToLS(localState.currentID);
+        render(localState, root, actions);
+
+    },
+    moveRight: async () => {
+        localState.currentID < localState.users.length ? localState.currentID = +localState.currentID + 1 : localState.currentID && actions.alertNotExist();
+        await getUserData(localState.currentID);
+        saveToLS(localState.currentID);
+        render(localState, root, actions);
+    }, 
+    moveLeft: async () => {
+        localState.currentID > 1 ? localState.currentID = +localState.currentID - 1 : localState.currentID && actions.alertNotExist();
+        await getUserData(localState.currentID);
+        saveToLS(localState.currentID);
         render(localState, root, actions);
     },
-    moveRight: () => {
-        let count = data.user.id < data.users.length ? data.user.id + 1 : data.users.length;
+
+    alertNotExist: () => {
+        alert("User not exist");
     }
 })
 
@@ -78,8 +91,6 @@ const getActions = (localState, root) => ({
 const root = document.querySelector(".user-container");
 const actions = getActions(state, root);
 actions.start();
-
-
 
 
 /*
@@ -97,42 +108,4 @@ fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
 не должен расти. 
 Доп задание. ID выведенного пользователя должно сохраняться в localStorage и при обновлении 
 страницы должны грузиться данны пользователя, на котором пользователь остановился в прошлый раз.
-
-const getUserData = async (id) => {
-    const usersURL = `https://jsonplaceholder.typicode.com/users/${id}`;
-    const postsURL = `https://jsonplaceholder.typicode.com/posts?userId=${id}`;
-
-    const userData = {};
-    const [userResponse, postsResponse] = await Promise.all([fetch(usersURL), fetch(postsURL)]); 
-    if (userResponse.ok && postsResponse.ok) {
-       const [user, posts] = await Promise.all([userResponse.json(), postsResponse.json()])
-        userData.user = user;
-        userData.posts = posts;
-    }
-
-    const nameParagraph = document.querySelector(".name")
-    const emailParagraph = document.querySelector(".email")
-    nameParagraph.innerText = userData.user.name 
-    emailParagraph.innerText = userData.user.email
-    
-    const postsContainer = document.querySelector('.posts')
-    const postElements = userData.posts.map(el => {
-        const container = document.createElement('div')
-        container.classList.add('item')
-        const namePost = document.createElement('p')
-        const textPost = document.createElement('p')
-        namePost.innerText = el.title
-        textPost.innerText = el.body
-
-        container.append(namePost,textPost)
-        return container
-    })
-
-    postsContainer.append(...postElements)
-
-    // console.log(postsContainer);
-    console.log(userData);
-
-}
-getUserData(1)
 */
