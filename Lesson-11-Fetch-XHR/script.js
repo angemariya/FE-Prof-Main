@@ -15,6 +15,10 @@ const getUserData = async (id) => {
         state.user = user;
         state.posts = posts;
         state.users = users;
+        state.error = false;
+    }
+    else {
+        state.error = true;
     }
 }
 
@@ -64,29 +68,33 @@ const render = (localState, root, actions) => {
 const getActions = (localState, root) => ({
     start: async () => {
         await getUserData(localState.currentID);
-        console.log(localState);
         saveToLS(localState.currentID);
         render(localState, root, actions);
-
     },
     moveRight: async () => {
-        localState.currentID < localState.users.length ? localState.currentID = +localState.currentID + 1 : localState.currentID && actions.alertNotExist();
+        localState.currentID < localState.users.length ? localState.currentID = +localState.currentID + 1 : actions.alertNotExist();
         await getUserData(localState.currentID);
-        saveToLS(localState.currentID);
-        render(localState, root, actions);
+        if (!localState.error) {
+            saveToLS(localState.currentID);
+            render(localState, root, actions);
+        } else {
+            actions.alertNotExist()
+        }
     }, 
     moveLeft: async () => {
-        localState.currentID > 1 ? localState.currentID = +localState.currentID - 1 : localState.currentID && actions.alertNotExist();
+        localState.currentID > 1 ? localState.currentID = +localState.currentID - 1 : actions.alertNotExist();
         await getUserData(localState.currentID);
-        saveToLS(localState.currentID);
-        render(localState, root, actions);
+        if (!localState.error) {
+            saveToLS(localState.currentID);
+            render(localState, root, actions)
+        } else {
+            actions.alertNotExist();
+        }
     },
-
     alertNotExist: () => {
         alert("User not exist");
     }
 })
-
 
 const root = document.querySelector(".user-container");
 const actions = getActions(state, root);
