@@ -8,4 +8,4 @@ Homeworks and class lessons from the course professional frontend development
 5. [Tic-Tac-Toe](https://angemariya.github.io/FE-Prof-Main/Tic-tac-toe/index.html)
 6. [To Do App 2.0](https://angemariya.github.io/FE-Prof-Main/toDoList2/index.html)
 7. [Momentum Widget](https://angemariya.github.io/FE-Prof-Main/Momentum/Index.html)
-8. [Fetch]((https://angemariya.github.io/FE-Prof-Main/Lesson-11-Fetch-XHR/index.html))
+8. [Fetch](https://angemariya.github.io/FE-Prof-Main/Lesson-11-Fetch-XHR/index.html)
