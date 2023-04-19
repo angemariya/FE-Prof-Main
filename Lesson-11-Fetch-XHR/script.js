@@ -47,13 +47,16 @@ const createElements = (localState, actions) => {
     posts.append(...postsArr); 
 
     const leftBtn = document.createElement("button");
-    leftBtn.innerHTML = "<--";
+    leftBtn.innerHTML = "<-";
     leftBtn.addEventListener("click", ()=> actions.moveLeft());
+    const currentPage = document.createElement("span");
+    currentPage.innerHTML = `${localState.currentID}`;
     const rightBtn = document.createElement("button");
-    rightBtn.innerHTML = "-->";
+    rightBtn.innerHTML = "->";
     rightBtn.addEventListener("click", ()=> actions.moveRight());
     const btnWrapper = document.createElement("div");
-    btnWrapper.append(leftBtn, rightBtn);
+    btnWrapper.classList.add("btn-wrapper");
+    btnWrapper.append(leftBtn, currentPage, rightBtn);
     const arr = [];
     arr.push(userContainer, posts, btnWrapper);
     return arr;
