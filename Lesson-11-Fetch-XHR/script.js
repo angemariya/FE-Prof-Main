@@ -1,4 +1,4 @@
-const state = localStorage.getItem("id") ? {currentID: JSON.parse(localStorage.getItem("id"))} : {currentID: 1}
+const state = localStorage.getItem("id") ? {currentID: localStorage.getItem("id")} : {currentID: 1}
 
 const saveToLS = (id) => {
     localStorage.setItem("id", id)
