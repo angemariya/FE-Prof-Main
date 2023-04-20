@@ -58,7 +58,22 @@ const createElements = (localState, actions) => {
     btnWrapper.classList.add("btn-wrapper");
     btnWrapper.append(leftBtn, currentPage, rightBtn);
     const arr = [];
-    arr.push(userContainer, posts, btnWrapper);
+    
+    const errorModal = document.createElement("div"); //Модальное окно
+    errorModal.classList.add("error-modal", "error-modal-close");
+    
+    const errorText = document.createElement("p");
+    errorText.classList.add("error-text");
+    errorText.innerHTML = "Sorry, user doesn't exist";
+    
+    const errorCloseButton = document.createElement("button");
+    errorCloseButton.classList.add("error-close-btn");
+    errorCloseButton.innerHTML = "Close";
+    errorCloseButton.addEventListener("click", () => actions.closeModal())
+    
+    errorModal.append(errorText, errorCloseButton);
+
+    arr.push(userContainer, posts, btnWrapper, errorModal);
     return arr;
 }
 
@@ -94,9 +109,15 @@ const getActions = (localState, root) => ({
             actions.alertNotExist();
         }
     },
+
     alertNotExist: () => {
-        alert("User not exist");
+       
+    },
+
+    closeModal: () => {
+
     }
+
 })
 
 const root = document.querySelector(".user-container");
