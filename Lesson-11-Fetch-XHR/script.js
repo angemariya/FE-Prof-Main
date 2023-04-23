@@ -90,34 +90,43 @@ const getActions = (localState, root) => ({
         render(localState, root, actions);
     },
     moveRight: async () => {
-        localState.currentID < localState.users.length ? localState.currentID = +localState.currentID + 1 : actions.alertNotExist();
+        if (localState.currentID < localState.users.length) {
+          localState.currentID = +localState.currentID + 1  
+        } else {
+            localState.currentID = localState.users.length + 1;
+            localState.error = true;
+            actions.alertNotExist();
+        }
         await getUserData(localState.currentID);
         if (!localState.error) {
             saveToLS(localState.currentID);
             render(localState, root, actions);
-        } else {
-            actions.alertNotExist()
-        }
-    }, 
+        } 
+    },
     moveLeft: async () => {
-        localState.currentID > 1 ? localState.currentID = +localState.currentID - 1 : actions.alertNotExist();
+        if (localState.currentID > 1) {
+            localState.currentID = +localState.currentID - 1
+        } else {
+           localState.currentID = 0;
+           localState.error = true;
+           actions.alertNotExist();
+        }
         await getUserData(localState.currentID);
         if (!localState.error) {
             saveToLS(localState.currentID);
-            render(localState, root, actions)
-        } else {
-            actions.alertNotExist();
+            render(localState, root, actions);
         }
     },
 
     alertNotExist: () => {
-       
+        const errorModal = document.querySelector(".error-modal");
+        errorModal.classList.remove("error-modal-close");
     },
 
     closeModal: () => {
-
+        const errorModal = document.querySelector(".error-modal");
+        errorModal.classList.add("error-modal-close");
     }
-
 })
 
 const root = document.querySelector(".user-container");
