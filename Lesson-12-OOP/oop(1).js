@@ -89,6 +89,7 @@ console.log(newDog instanceof Animal);
 newCat.meow();
 newCat.breath();
 
+
 const animals = [newDog, newCat];
 animals.forEach((animal) => animal.breath());
 
