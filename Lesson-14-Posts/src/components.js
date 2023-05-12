@@ -4,7 +4,7 @@ export function postComponent(post) {
   return div;
 }
 
-export function buttonComponent(label, onClick) {
+export function buttonComponent({label, onClick, disabled = false}) {
   const button = document.createElement("button");
   button.innerText = label;
   button.addEventListener("click", onClick);

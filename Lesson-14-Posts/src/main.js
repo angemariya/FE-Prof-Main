@@ -8,28 +8,46 @@ const root = document.querySelector("#app");
 const btn = document.querySelector("button");
 
 async function handlePrev() {
-  postId = postId > 0 && postId - 1;
+  postId--;
   await getPost(postId);
   await render(root);
 }
 
 async function handleNext() {
-  postId = postId <= allPosts.length && postId + 1;
+  postId++;
   await getPost(postId);
   await render(root);
 }
 
-async function render(root) {
+async function render() {
   root.innerHTML = "Loading";
 
-  const post = await getPost(postId);
-
-  root.innerHTML = "";
-  root.append(
-    buttonComponent("prev", handlePrev),
-    postComponent(post),
-    buttonComponent("next", handleNext)
-  );
+  try {
+    const post = await getPost(postId);
+    root.innerHTML = "";
+    root.append(
+      buttonComponent({
+        label: "Prev post",
+        onClick: handlePrev,
+        disabled: postId === 1,
+      }),
+      postComponent(post),
+      buttonComponent({
+        label: "Next post",
+        onClick: handleNext,
+        disabled: postId === 100,
+      })
+    );
+  } catch (e) {
+    root.innerHTML = "";
+    root.append(
+      e.message,
+      buttonComponent({
+        label: "Reset",
+        onClick: handleReset,
+      })
+    );
+  }
 }
 
 render(root);
