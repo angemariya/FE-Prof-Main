@@ -1,23 +1,21 @@
 const requestURL = "https://jsonplaceholder.typicode.com/users";
 
-function sendRequest(method, URL, body = null) {
+async function sendRequest(method, URL, body = null) {
     const headers = {
         'Content-Type': 'application/json'
     }
-    return fetch(URL, {
+    const response = await fetch(URL, {
         method: method,
-        body: JSON.stringify(body), 
+        body: JSON.stringify(body),
         headers: headers
-    }).then(response => {
-        if(response.ok){
-         return response.json();   
-        }
-        return response.json().then(error => {
-            const e = new Error('Что-то пошло не так'); 
-            e.data = error;
-            throw e;
-        })
-    })
+    });
+    if (response.ok) {
+        return response.json();
+    }
+    const error = await response.json();
+    const e = new Error('Что-то пошло не так');
+    e.data = error;
+    throw e;
   }
 
   const body = {
