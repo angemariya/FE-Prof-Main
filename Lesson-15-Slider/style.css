@@ -1,0 +1,32 @@
+.gallery {
+  width: 420px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+.gallery .wrapper {
+  display: flex;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  transition: left 0.3s;
+  z-index: -1;
+}
+
+button {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+  opacity: 0.6;
+  transition: opacity 0.1s;
+}
+
+button:hover {
+  opacity: 1;
+}
