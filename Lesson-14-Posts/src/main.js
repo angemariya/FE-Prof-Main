@@ -1,6 +1,7 @@
 import "./style.css";
 import { getPost, getAllPosts } from "./api.js";
 import { buttonComponent, postComponent } from "./components.js";
+import { setupModal } from "./modal.js";
 
 let postId = 1;
 let allPosts = await getAllPosts();
@@ -19,6 +20,9 @@ async function handleNext() {
   await render(root);
 }
 
+const modalButton = buttonComponent({label: "Modal button"});
+setupModal(modalButton, "Content")
+
 async function render() {
   root.innerHTML = "Loading";
 
@@ -36,7 +40,8 @@ async function render() {
         label: "Next post",
         onClick: handleNext,
         disabled: postId === 100,
-      })
+      }),
+      modalButton
     );
   } catch (e) {
     root.innerHTML = "";
