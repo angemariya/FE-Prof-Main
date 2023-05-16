@@ -1,0 +1,36 @@
+  .backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 0.4s;
+  }
+  
+  .modal {
+    transition: scale 0.3s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    width: 300px;
+    height: 400px;
+    background: whitesmoke;
+    border-radius: 4px;
+    padding: 20px;
+    color: black;
+  }
+  
+  .animationClosed .modal {
+    scale: 0;
+  }
+  
+  .animationClosed {
+    opacity: 0;
+  }
+  
+  .closed {
+    display: none;
+  }
+  
