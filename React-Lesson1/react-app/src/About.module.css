@@ -1,0 +1,20 @@
+.title {
+    color: red;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+    margin-left: 10px;
+}
