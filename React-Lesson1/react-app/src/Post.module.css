@@ -1,0 +1,15 @@
+.card {
+    max-width: 400px;
+    background: white;
+    padding: 1rem;
+    background-color: none;
+}
+
+h3 {
+    color: rgb(222, 85, 85)
+}
+
+.marked {
+    background-color: wheat;
+}
+

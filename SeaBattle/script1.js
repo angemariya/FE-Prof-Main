@@ -6,7 +6,6 @@ const state = {
   viewModel: {}, //записываем свойства, которые мы сами внутри нашего кода контролируем
 };
 
-//тут мб функции к-е работают с данными
 
 const createState = () => {
   const createSquare = (x,y) => ({
@@ -52,7 +51,7 @@ const getActions = (localState, root) => {
   const card = {
   start: () => {render(localState, root, card)},
   
-  getCoordinate:(x) => {console.log([x])},
+  getCoordinate:(x) => {console.table([x])},
   
   changeStatus: (square) => {
     square.status = !square.status;
@@ -65,6 +64,7 @@ const getActions = (localState, root) => {
 const root = document.querySelector("#root");
 const actions = getActions(state, root);
 actions.start();
+
 
 
 // сделать отрисовку из модели

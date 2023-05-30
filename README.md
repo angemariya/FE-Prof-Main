@@ -9,3 +9,4 @@ Homeworks and class lessons from the course professional frontend development
 6. [To Do App 2.0](https://angemariya.github.io/FE-Prof-Main/toDoList2/index.html)
 7. [Momentum Widget](https://angemariya.github.io/FE-Prof-Main/Momentum/Index.html)
 8. [Fetch](https://angemariya.github.io/FE-Prof-Main/Lesson-11-Fetch-XHR/index.html)
+9. [Slider](https://angemariya.github.io/FE-Prof-Main/Lesson-15-Slider/index.html)
